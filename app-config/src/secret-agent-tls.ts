@@ -91,7 +91,7 @@ export async function generateCert(expireInDays: number = 365 * 10): Promise<Cer
 export async function loadOrCreateCert(): Promise<Cert> {
   const settings = await loadSettingsLazy();
 
-  if (settings.secretAgent) {
+  if (settings.secretAgent && 'port' in settings.secretAgent) {
     // TODO: check expiry
     return settings.secretAgent;
   }

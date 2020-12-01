@@ -8,12 +8,16 @@ import { NotFoundError } from './errors';
 import { logger } from './logging';
 
 export interface Settings {
-  secretAgent?: {
-    key: string;
-    cert: string;
-    expiry: string;
-    port?: number;
-  };
+  secretAgent?:
+    | {
+        key: string;
+        cert: string;
+        expiry: string;
+        port?: number;
+      }
+    | {
+        unixSocket: string;
+      };
 }
 
 export function settingsDirectory() {
