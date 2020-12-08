@@ -4,12 +4,7 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "app-config",
-      "app-config-webpack-plugin",
-      "app-config-inject",
-      "app-config-react-native-transformer",
-      "examples/*",
-      "docs"
+      "app-config"
     ],
     "nohoist": [
       "**/@types/react-native"

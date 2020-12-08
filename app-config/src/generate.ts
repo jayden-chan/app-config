@@ -37,6 +37,8 @@ export async function generateTypeFiles({ directory, schemaOptions, metaOptions 
 
   const metaDirectory = metaOptions?.directory ?? directory ?? '.';
 
+  console.log(schema)
+
   await Promise.all(
     generate.map(
       async ({
