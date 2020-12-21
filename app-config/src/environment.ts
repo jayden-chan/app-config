@@ -7,8 +7,19 @@ export const defaultAliases: EnvironmentAliases = {
   dev: 'development',
 };
 
-export function currentEnvironment(aliases: EnvironmentAliases = defaultAliases) {
-  const value = process.env.APP_CONFIG_ENV ?? process.env.NODE_ENV ?? process.env.ENV;
+const defaultCurrentEnvironmentVariableNames = ['APP_CONFIG_ENV', 'NODE_ENV', 'ENV'];
+
+export function currentEnvironment(
+  aliases: EnvironmentAliases = defaultAliases,
+  currentEnvironmentVariableNames: string[] = defaultCurrentEnvironmentVariableNames,
+) {
+  let value: string | undefined;
+
+  for (const variableName of currentEnvironmentVariableNames) {
+    if ((value = process.env[variableName])) {
+      break;
+    }
+  }
 
   if (!value) return undefined;
 
